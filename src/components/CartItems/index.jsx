@@ -1,13 +1,14 @@
 import React from 'react'
 
+import TrashCan from '../../assets/trash-icon.svg'
 import { useCart } from '../../hooks/CartContext'
 import formatCurrency from '../../utils/formatCurrency'
-import { Container, Header, Body, EmptyCart } from './styles'
+import { Container, Header, Body, EmptyCart, TrashButton } from './styles'
 
 export function CartItems() {
-  const { cartProducts } = useCart()
+  const { cartProducts, increaseProducts, decreaseProducts, deleteProducts } =
+    useCart()
 
-  console.log(cartProducts)
   return (
     <Container>
       <Header>
@@ -24,8 +25,15 @@ export function CartItems() {
             <img src={product.url} />
             <p>{product.name}</p>
             <p>{formatCurrency(product.price)}</p>
-            <p>{product.quantity}</p>
+            <div className="quantity-container">
+              <button onClick={() => decreaseProducts(product.id)}>-</button>
+              <p>{product.quantity}</p>
+              <button onClick={() => increaseProducts(product.id)}>+</button>
+            </div>
             <p>{formatCurrency(product.quantity * product.price)}</p>
+            <TrashButton onClick={() => deleteProducts(product.id)}>
+              <img src={TrashCan} alt="icone lata de lixo" />
+            </TrashButton>
           </Body>
         ))
       ) : (
