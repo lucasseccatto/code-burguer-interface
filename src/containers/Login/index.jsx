@@ -58,7 +58,11 @@ export function Login() {
       putUserData(data)
 
       setTimeout(() => {
-        history.push('/')
+        if (data.admin) {
+          history.push('/pedidos')
+        } else {
+          history.push('/')
+        }
       }, 1000)
     } catch (error) {
       console.error('Erro ao fazer login:', error)
