@@ -10,12 +10,32 @@ import TableRow from '@mui/material/TableRow'
 import Typography from '@mui/material/Typography'
 import PropTypes from 'prop-types'
 import React from 'react'
+import { toast } from 'react-toastify'
 
-import { ProductsImg } from './styles'
+import api from '../../../services/api'
+import status from './order-status'
+import { ProductsImg, ReactSelectStyle } from './styles'
 
 function Row({ row }) {
   const [open, setOpen] = React.useState(false)
+  const [loading, setLoading] = React.useState(false)
+
   const productsExist = row.products && row.products.length > 0
+
+  async function setNewStatus(id, status) {
+    setLoading(true)
+    try {
+      await api.put(`orders/${id}`, { status })
+      toast.success('Status alterado com sucesso', { autoClose: 1000 })
+    } catch (err) {
+      console.error(err)
+      toast.error('Falha ao tentar alterar o status, tente novamente', {
+        autoClose: 1000
+      })
+    } finally {
+      setLoading(false)
+    }
+  }
 
   return (
     <React.Fragment>
@@ -34,7 +54,20 @@ function Row({ row }) {
         </TableCell>
         <TableCell>{row.name}</TableCell>
         <TableCell>{row.date}</TableCell>
-        <TableCell>{row.status}</TableCell>
+        <TableCell>
+          <ReactSelectStyle
+            options={status}
+            menuPortalTarget={document.body}
+            placeholder="Status"
+            defaultValue={
+              status.find(option => option.value === row.status) || null
+            }
+            onChange={newStatus => {
+              setNewStatus(row.orderId, newStatus.value)
+            }}
+            isLoading={loading}
+          />
+        </TableCell>
       </TableRow>
       <TableRow>
         <TableCell style={{ paddingBottom: 0, paddingTop: 0 }} colSpan={6}>
