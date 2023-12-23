@@ -23,6 +23,7 @@ export function Products({ location: { state } }) {
   const [products, setProducts] = useState([])
   const [filteredProducts, setFilteredProducts] = useState([])
   const [activeCategory, setActiveCategory] = useState(categoryId)
+
   useEffect(() => {
     async function loadCategories() {
       const { data } = await api.get('categories')
