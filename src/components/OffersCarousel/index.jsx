@@ -33,8 +33,7 @@ export function OffersCarousel() {
     { width: 1, itemsToShow: 1 },
     { width: 400, itemsToShow: 2 },
     { width: 600, itemsToShow: 3 },
-    { width: 900, itemsToShow: 4 },
-    { width: 1200, itemsToShow: 5 }
+    { width: 900, itemsToShow: 4 }
   ]
 
   return (
@@ -42,7 +41,7 @@ export function OffersCarousel() {
       <CategoryImg src={Offers} alt="logo da oferta" />
 
       <Carousel
-        itemsToShow={5}
+        itemsToShow={4}
         style={{ width: '90%' }}
         breakPoints={breakPoints}
       >
