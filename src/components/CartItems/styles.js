@@ -15,7 +15,6 @@ export const Header = styled.div`
   border-bottom: 1px solid #b5b5b5;
 
   p {
-    width: 100px;
     font-size: 16px;
     color: #b5b5b5;
   }
@@ -36,6 +35,7 @@ export const Body = styled.div`
   p {
     font-size: 16px;
     color: #000000;
+    width: 100px;
   }
 
   .quantity-container {
