@@ -9,8 +9,6 @@
 <br>
 ☑ Botão de realizar pedido para enviar o pedido ao banco de dados
 <br>
-📲 Responsividade para celulares
-<hr>
 
 # Funcionalidades da tela de Admin para a gestão dos produtos da página
 📊 Exibir todos os pedidos e possibilidade de alteração do status do pedido
