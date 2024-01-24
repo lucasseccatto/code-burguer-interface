@@ -7,8 +7,6 @@
 <br>
 🛒 Carrinho para o armazenamento dos itens escolhidos
 <br>
-📝 Formulário de contato para entrar em contato através do email
-<br>
 ☑ Botão de realizar pedido para enviar o pedido ao banco de dados
 <br>
 📲 Responsividade para celulares
